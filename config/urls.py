@@ -11,3 +11,6 @@ urlpatterns = [
     path('contas/', include('django.contrib.auth.urls')),
     path('', include('cadastro.urls')),
 ]
+
+# Define a página exibida quando nenhuma rota corresponde ao endereço.
+handler404 = 'cadastro.views.handler404'

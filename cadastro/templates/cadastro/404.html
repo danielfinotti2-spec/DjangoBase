@@ -1,0 +1,11 @@
+{% extends 'cadastro/base.html' %}
+
+{% block titulo %}Página não encontrada{% endblock %}
+
+{% block conteudo %}
+    <section>
+        <h1>Página não encontrada</h1>
+        <p>O endereço informado não corresponde a uma página deste site.</p>
+        <a href="{% url 'index' %}">Voltar ao início</a>
+    </section>
+{% endblock %}
