@@ -3,24 +3,24 @@
 {% block titulo %}{{ titulo }}{% endblock %}
 
 {% block conteudo %}
-    <section class="painel formulario-painel">
-        <p class="sobretitulo">Cadastro</p>
+    <section>
+        <p>Cadastro</p>
         <h1>{{ titulo }}</h1>
         <form method="post" novalidate>
             {% csrf_token %}
             {% for field in form %}
-                <div class="grupo-campo">
+                <div>
                     {{ field.label_tag }}
                     {{ field }}
                     {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
-                    {% for error in field.errors %}<p class="erro-campo">{{ error }}</p>{% endfor %}
+                    {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
                 </div>
             {% endfor %}
-            {% for error in form.non_field_errors %}<p class="erro-campo">{{ error }}</p>{% endfor %}
-            <div class="acoes">
-                <button class="botao primario" type="submit">Salvar</button>
-                {% if pessoa %}<a class="botao discreto" href="{% url 'detalhe' pessoa.id %}">Cancelar</a>
-                {% else %}<a class="botao discreto" href="{% url 'index' %}">Cancelar</a>{% endif %}
+            {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+            <div>
+                <button type="submit">Salvar</button>
+                {% if pessoa %}<a href="{% url 'detalhe' pessoa.id %}">Cancelar</a>
+                {% else %}<a href="{% url 'index' %}">Cancelar</a>{% endif %}
             </div>
         </form>
     </section>

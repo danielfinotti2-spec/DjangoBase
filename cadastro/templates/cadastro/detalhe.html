@@ -3,22 +3,22 @@
 {% block titulo %}{{ pessoa.nome }}{% endblock %}
 
 {% block conteudo %}
-    <section class="painel">
-        <p class="sobretitulo">Detalhes do cadastro</p>
+    <section>
+        <p>Detalhes do cadastro</p>
         <h1>{{ pessoa.nome }}</h1>
-        <dl class="detalhes">
+        <dl>
             <dt>E-mail</dt><dd>{{ pessoa.email }}</dd>
             <dt>Idade</dt><dd>{{ pessoa.idade }} anos</dd>
         </dl>
         <h2>Telefones</h2>
-        <ul class="telefones">
+        <ul>
             {% for telefone in pessoa.telefones.all %}<li>{{ telefone.numero }}</li>
             {% empty %}<li>Nenhum telefone cadastrado.</li>{% endfor %}
         </ul>
-        <div class="acoes">
-            <a class="botao primario" href="{% url 'editar' pessoa.id %}">Editar</a>
-            <a class="botao perigo" href="{% url 'deletar' pessoa.id %}">Excluir</a>
-            <a class="botao discreto" href="{% url 'index' %}">Voltar</a>
+        <div>
+            <a href="{% url 'editar' pessoa.id %}">Editar</a>
+            <a href="{% url 'deletar' pessoa.id %}">Excluir</a>
+            <a href="{% url 'index' %}">Voltar</a>
         </div>
     </section>
 {% endblock %}

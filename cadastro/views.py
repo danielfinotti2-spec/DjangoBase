@@ -1,9 +1,27 @@
 from django.contrib import messages
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import PessoaForm
 from .models import Pessoa
+
+
+def signup(request):
+    """Cria uma conta comum e inicia a sessão do novo usuário."""
+    form = UserCreationForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        usuario = form.save()
+        login(request, usuario)
+        messages.success(request, 'Sua conta foi criada. Você já está conectado.')
+        return redirect('index')
+    return render(request, 'registration/signup.html', {'form': form})
+
+
+def sobre(request):
+    """Exibe informações sobre o projeto."""
+    return render(request, 'cadastro/sobre.html')
 
 
 def index(request):
@@ -61,3 +79,8 @@ def deletar(request, id):
         messages.success(request, f'O cadastro de {nome} foi removido.')
         return redirect('index')
     return render(request, 'cadastro/deletar.html', {'pessoa': pessoa})
+
+
+def handler404(request, exception):
+    """Exibe uma página personalizada quando uma rota não existe."""
+    return render(request, 'cadastro/404.html', status=404)

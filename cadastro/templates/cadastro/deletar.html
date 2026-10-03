@@ -3,14 +3,14 @@
 {% block titulo %}Excluir {{ pessoa.nome }}{% endblock %}
 
 {% block conteudo %}
-    <section class="painel">
-        <p class="sobretitulo">Confirmação</p>
+    <section>
+        <p>Confirmação</p>
         <h1>Excluir cadastro?</h1>
         <p>Tem certeza de que deseja excluir <strong>{{ pessoa.nome }}</strong>? Esta ação não pode ser desfeita.</p>
-        <form method="post" class="acoes">
+        <form method="post">
             {% csrf_token %}
-            <button class="botao perigo" type="submit">Sim, excluir</button>
-            <a class="botao discreto" href="{% url 'detalhe' pessoa.id %}">Cancelar</a>
+            <button type="submit">Sim, excluir</button>
+            <a href="{% url 'detalhe' pessoa.id %}">Cancelar</a>
         </form>
     </section>
 {% endblock %}

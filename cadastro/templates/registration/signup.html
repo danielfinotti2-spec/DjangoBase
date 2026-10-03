@@ -1,0 +1,26 @@
+{% extends 'cadastro/base.html' %}
+
+{% block titulo %}Criar conta{% endblock %}
+
+{% block conteudo %}
+    <section>
+        <p>Novo usuário</p>
+        <h1>Criar conta</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}
+                    {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+                </div>
+            {% endfor %}
+            {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+            <div>
+                <button type="submit">Criar conta</button>
+                <a href="{% url 'login' %}">Já tenho uma conta</a>
+            </div>
+        </form>
+    </section>
+{% endblock %}

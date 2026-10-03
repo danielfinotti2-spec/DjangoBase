@@ -8,7 +8,7 @@ class PessoaForm(forms.ModelForm):
         model = Pessoa
         fields = ['nome', 'email', 'idade']
         widgets = {
-            'nome': forms.TextInput(attrs={'class': 'campo', 'placeholder': 'Nome completo'}),
-            'email': forms.EmailInput(attrs={'class': 'campo', 'placeholder': 'voce@exemplo.com'}),
-            'idade': forms.NumberInput(attrs={'class': 'campo', 'min': 0}),
+            'nome': forms.TextInput(attrs={'placeholder': 'Nome completo'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'voce@exemplo.com'}),
+            'idade': forms.NumberInput(attrs={'min': 0}),
         }
