@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #242424;
+    background: #e8e8e8;
+}
+
+body {
+    margin: 0;
+    font-weight: 400;
+}
+
+h1, h2, h3, p, a, button, input, label {
+    font-family: inherit;
+}
+
+h1, h2, h3 {
+    font-weight: 500;
+}
+
+button, input, select, textarea {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.erro-body {
+    min-height: 100vh;
+    background: #e8e8e8;
+}
+
+.erro-pagina {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 32px 20px;
+}
+
+.erro-cartao {
+    display: flex;
+    width: min(100%, 760px);
+    min-height: 420px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 28px;
+    border-radius: 10px;
+    background: #fafafa;
+    text-align: center;
+}
+
+.erro-numero {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: #c8102e;
+    font-size: clamp(5rem, 15vw, 8rem);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.erro-numero i {
+    font-size: .55em;
+}
+
+.erro-cartao h1 {
+    margin: 10px 0 8px;
+    font-size: 1.2rem;
+}
+
+.erro-cartao p {
+    max-width: 380px;
+    margin: 5px 0;
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.erro-cartao a {
+    color: #c8102e;
+    text-decoration: none;
+}
+
+.erro-cartao a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+    .erro-cartao {
+        min-height: 340px;
+        padding: 36px 22px;
+    }
+}

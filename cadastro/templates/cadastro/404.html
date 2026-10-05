@@ -1,11 +1,21 @@
-{% extends 'cadastro/base.html' %}
-
-{% block titulo %}Página não encontrada{% endblock %}
-
-{% block conteudo %}
-    <section>
-        <h1>Página não encontrada</h1>
-        <p>O endereço informado não corresponde a uma página deste site.</p>
-        <a href="{% url 'index' %}">Voltar ao início</a>
-    </section>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página não encontrada</title>
+    <link rel="stylesheet" href="{% static 'cadastro/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body class="erro-body">
+    <main class="erro-pagina">
+        <section class="erro-cartao" aria-labelledby="titulo-erro">
+            <p class="erro-numero" aria-label="Erro 404">4<i class="fa-solid fa-ghost" aria-hidden="true"></i>4</p>
+            <h1 id="titulo-erro">Página não encontrada</h1>
+            <p class="erro-descricao">A página que você procura não existe ou o endereço está incorreto.</p>
+            <p>Volte para a <a href="{% url 'index' %}">página inicial</a>.</p>
+        </section>
+    </main>
+</body>
+</html>

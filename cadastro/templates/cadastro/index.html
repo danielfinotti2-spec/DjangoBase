@@ -15,7 +15,7 @@
     <form method="get">
         <label for="busca">Buscar por nome ou e-mail</label>
         <input id="busca" type="search" name="q" value="{{ termo }}" placeholder="Buscar por nome ou e-mail">
-        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button type="submit"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Buscar</button>
     </form>
 
     {% if pessoas %}
@@ -34,7 +34,7 @@
         </div>
     {% else %}
         <div>
-            <h2><i class="fa-solid fa-circle-xmark"></i> Nenhuma pessoa encontrada <i class="fa-solid fa-circle-xmark"></i></h2>
+            <h2><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Nenhuma pessoa encontrada <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i></h2>
             <p>{% if termo %}Tente outro termo de busca.{% else %}Entre para adicionar o primeiro cadastro.{% endif %}</p>
         </div>
     {% endif %}

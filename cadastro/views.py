@@ -54,6 +54,10 @@ def detalhe(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     return render(request, 'cadastro/detalhe.html', {'pessoa': pessoa})
 
+@login_required
+def ajuda(request):
+    """Exibe a página de ajuda do projeto."""
+    return render(request, 'cadastro/ajuda.html')
 
 @login_required
 def editar(request, id):

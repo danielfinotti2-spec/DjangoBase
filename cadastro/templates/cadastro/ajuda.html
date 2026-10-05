@@ -1,0 +1,16 @@
+{% extends 'cadastro/base.html' %}
+
+{% block titulo %}Ajuda{% endblock %}
+
+{% block conteudo %}
+    <section>
+        <h1>Ajuda</h1>
+        <p>Use a busca na página inicial para localizar uma pessoa pelo nome ou pelo e-mail.</p>
+        {% if user.is_authenticated %}
+            <p>Para incluir alguém, escolha “Nova pessoa” no menu. Na página do cadastro, você pode editar ou excluir os dados.</p>
+        {% else %}
+            <p>Entre na sua conta para criar, editar ou remover cadastros.</p>
+            <p><a href="{% url 'login' %}">Entrar</a> ou <a href="{% url 'signup' %}">criar uma conta</a>.</p>
+        {% endif %}
+    </section>
+{% endblock %}

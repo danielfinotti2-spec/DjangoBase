@@ -17,9 +17,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '[REDACTED]'
 
 # AVISO DE SEGURANÇA: não deixe a depuração ativada em produção.
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Aplicativos e componentes instalados no projeto.
