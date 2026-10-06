@@ -4,22 +4,40 @@ Consulte a documentação para entender as opções disponíveis:
 https://docs.djangoproject.com/en/6.1/topics/settings/
 """
 
+import os
 from pathlib import Path
+
+from django.core.exceptions import ImproperlyConfigured
 
 # Define caminhos do projeto, como BASE_DIR / 'subdiretorio'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Lê variáveis locais do arquivo .env sem substituir variáveis já definidas no sistema.
+ARQUIVO_ENV = BASE_DIR / '.env'
+if ARQUIVO_ENV.exists():
+    for linha in ARQUIVO_ENV.read_text(encoding='utf-8').splitlines():
+        linha = linha.strip()
+        if linha and not linha.startswith('#') and '=' in linha:
+            nome, valor = linha.split('=', 1)
+            os.environ.setdefault(nome.strip(), valor.strip().strip('"').strip("'"))
 
 
 # Configurações iniciais de desenvolvimento; revise-as antes de publicar em produção.
 # Consulte https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
-# AVISO DE SEGURANÇA: mantenha secreta a chave usada em produção.
-SECRET_KEY = '[REDACTED]'
+# A chave secreta vem do ambiente ou do arquivo .env local, que não é versionado.
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+if not SECRET_KEY:
+    raise ImproperlyConfigured('Defina DJANGO_SECRET_KEY no ambiente ou no arquivo .env local.')
 
-# AVISO DE SEGURANÇA: não deixe a depuração ativada em produção.
-DEBUG = False
+# Mantenha a depuração desligada em produção.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('1', 'true', 'yes', 'on')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+    if host.strip()
+]
 
 
 

@@ -129,6 +129,17 @@ celerybeat.pid
 
 # Environments
 .env
+.env.*
+!.env.example
+secrets/
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
 .venv
 env/
 venv/
