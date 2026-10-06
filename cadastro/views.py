@@ -18,6 +18,15 @@ def signup(request):
         return redirect('index')
     return render(request, 'registration/signup.html', {'form': form})
 
+def termos(request):
+    """Exibe os termos de uso do projeto."""
+    return render(request, 'cadastro/termos.html')
+
+
+def politica(request):
+    """Exibe a política de privacidade do projeto."""
+    return render(request, 'cadastro/politica.html')
+
 
 def sobre(request):
     """Exibe informações sobre o projeto."""
